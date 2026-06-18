@@ -1016,6 +1016,10 @@ function AwardsCarousel({ onOpen }: { onOpen: (list: string[], idx: number) => v
   const next = () => setI((v) => (v + 1) % len);
   const images = AWARDS.map((a) => a.image);
   const a = AWARDS[i];
+  const previousIndex = (i - 1 + len) % len;
+  const nextIndex = (i + 1) % len;
+  const previousAward = AWARDS[previousIndex];
+  const nextAward = AWARDS[nextIndex];
 
   // auto-advance, paused on hover
   const [paused, setPaused] = useState(false);
@@ -1046,7 +1050,7 @@ function AwardsCarousel({ onOpen }: { onOpen: (list: string[], idx: number) => v
         onMouseLeave={() => setPaused(false)}
       >
         <div
-          className="relative grid grid-cols-1 lg:grid-cols-[minmax(220px,1fr)_minmax(320px,560px)_minmax(220px,1fr)] items-stretch gap-6 min-h-[520px] select-none"
+          className="relative grid grid-cols-1 lg:grid-cols-[minmax(240px,1fr)_minmax(340px,580px)_minmax(240px,1fr)] items-stretch gap-6 min-h-[560px] select-none"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
@@ -1067,18 +1071,29 @@ function AwardsCarousel({ onOpen }: { onOpen: (list: string[], idx: number) => v
                 className={`glass rounded-3xl transition-all duration-500 text-left
                   ${
                     isCenter
-                      ? "p-4 w-full max-w-[560px] mx-auto scale-100 opacity-100 z-10 cursor-zoom-in"
-                      : "p-5 hidden lg:flex items-center min-h-[460px] scale-90 opacity-70 hover:opacity-95 cursor-pointer relative overflow-hidden"
+                      ? "p-4 w-full max-w-[580px] mx-auto scale-100 opacity-100 z-10 cursor-zoom-in"
+                      : "p-6 hidden lg:flex items-center min-h-[500px] scale-90 opacity-75 hover:opacity-95 cursor-pointer relative overflow-hidden"
                   }`}
               >
                 {!isCenter && (
-                  <div
-                    className={`absolute size-16 rounded-[1.35rem] bg-sage/35 ${
-                      side === "left"
-                        ? "bottom-12 left-1/2 -translate-x-1/2 rotate-12"
-                        : "top-16 left-1/2 -translate-x-1/2 rounded-full border-4 border-pink/30 bg-transparent"
-                    }`}
-                  />
+                  <>
+                    <div
+                      className={`absolute size-16 rounded-[1.35rem] bg-sage/35 ${
+                        side === "left"
+                          ? "bottom-28 left-1/2 -translate-x-1/2 rotate-12"
+                          : "top-16 left-1/2 -translate-x-1/2 rounded-full border-4 border-pink/30 bg-transparent"
+                      }`}
+                    />
+                    <img
+                      src={side === "left" ? lilyPink : helleboreGreen}
+                      alt=""
+                      className={`pointer-events-none absolute w-20 opacity-80 drop-shadow-lg ${
+                        side === "left"
+                          ? "bottom-8 left-1/2 -translate-x-1/2"
+                          : "bottom-10 right-8"
+                      }`}
+                    />
+                  </>
                 )}
                 <div className="relative w-full ring-stamp rounded-2xl p-2">
                   <img
@@ -1109,14 +1124,14 @@ function AwardsCarousel({ onOpen }: { onOpen: (list: string[], idx: number) => v
         <button
           onClick={prev}
           aria-label="Previous"
-          className="absolute left-0 md:-left-2 top-1/2 -translate-y-1/2 size-12 rounded-full glass grid place-items-center hover:bg-pink hover:scale-110 transition z-20"
+          className="absolute left-0 lg:-left-6 top-1/2 -translate-y-1/2 size-12 rounded-full glass grid place-items-center hover:bg-pink hover:scale-110 transition z-20"
         >
           <ChevronLeft className="size-6" />
         </button>
         <button
           onClick={next}
           aria-label="Next"
-          className="absolute right-0 md:-right-2 top-1/2 -translate-y-1/2 size-12 rounded-full glass grid place-items-center hover:bg-pink hover:scale-110 transition z-20"
+          className="absolute right-0 lg:-right-6 top-1/2 -translate-y-1/2 size-12 rounded-full glass grid place-items-center hover:bg-pink hover:scale-110 transition z-20"
         >
           <ChevronRight className="size-6" />
         </button>
