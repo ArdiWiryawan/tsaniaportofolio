@@ -1046,7 +1046,7 @@ function AwardsCarousel({ onOpen }: { onOpen: (list: string[], idx: number) => v
         onMouseLeave={() => setPaused(false)}
       >
         <div
-          className="relative flex items-stretch justify-center gap-4 md:gap-6 min-h-[460px] select-none"
+          className="relative grid grid-cols-1 lg:grid-cols-[minmax(220px,1fr)_minmax(320px,560px)_minmax(220px,1fr)] items-stretch gap-6 min-h-[520px] select-none"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
@@ -1054,6 +1054,7 @@ function AwardsCarousel({ onOpen }: { onOpen: (list: string[], idx: number) => v
             const idx = (i + offset + len) % len;
             const isCenter = offset === 0;
             const item = AWARDS[idx];
+            const side = offset < 0 ? "left" : "right";
             return (
               <button
                 key={offset}
@@ -1063,14 +1064,23 @@ function AwardsCarousel({ onOpen }: { onOpen: (list: string[], idx: number) => v
                   else next();
                 }}
                 aria-label={isCenter ? "Open certificate" : offset < 0 ? "Previous" : "Next"}
-                className={`glass rounded-3xl p-4 transition-all duration-500 text-left
+                className={`glass rounded-3xl transition-all duration-500 text-left
                   ${
                     isCenter
-                      ? "w-[320px] md:w-[560px] scale-100 opacity-100 z-10 cursor-zoom-in"
-                      : "w-[200px] md:w-[320px] scale-90 opacity-60 hover:opacity-90 hidden md:block cursor-pointer"
+                      ? "p-4 w-full max-w-[560px] mx-auto scale-100 opacity-100 z-10 cursor-zoom-in"
+                      : "p-5 hidden lg:flex items-center min-h-[460px] scale-90 opacity-70 hover:opacity-95 cursor-pointer relative overflow-hidden"
                   }`}
               >
-                <div className="ring-stamp rounded-2xl p-2">
+                {!isCenter && (
+                  <div
+                    className={`absolute size-16 rounded-[1.35rem] bg-sage/35 ${
+                      side === "left"
+                        ? "bottom-12 left-1/2 -translate-x-1/2 rotate-12"
+                        : "top-16 left-1/2 -translate-x-1/2 rounded-full border-4 border-pink/30 bg-transparent"
+                    }`}
+                  />
+                )}
+                <div className="relative w-full ring-stamp rounded-2xl p-2">
                   <img
                     src={item.image}
                     alt={item.title}
