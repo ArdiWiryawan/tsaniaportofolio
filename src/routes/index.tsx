@@ -1072,7 +1072,7 @@ function AwardsCarousel({ onOpen }: { onOpen: (list: string[], idx: number) => v
                   ${
                     isCenter
                       ? "p-4 w-full max-w-[580px] mx-auto scale-100 opacity-100 z-10 cursor-zoom-in"
-                      : "p-6 hidden md:flex items-center min-h-[480px] scale-90 opacity-80 hover:opacity-100 cursor-pointer relative overflow-hidden"
+                      : "p-6 hidden md:flex flex-col justify-center items-center min-h-[480px] scale-90 opacity-80 hover:opacity-100 cursor-pointer relative overflow-hidden"
                   }`}
               >
                 {!isCenter && (
