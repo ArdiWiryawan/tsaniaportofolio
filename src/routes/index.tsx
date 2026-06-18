@@ -23,7 +23,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-import portrait from "@/assets/buthak1.jpeg";
+import portrait from "@/assets/Buthak1.jpeg";
 import lilyPink from "@/assets/lily-pink.png";
 import lilyBeige from "@/assets/lily-beige.png";
 import orchidGreen from "@/assets/orchid-green.png";
