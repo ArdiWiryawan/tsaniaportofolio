@@ -1050,7 +1050,7 @@ function AwardsCarousel({ onOpen }: { onOpen: (list: string[], idx: number) => v
         onMouseLeave={() => setPaused(false)}
       >
         <div
-          className="relative grid grid-cols-1 lg:grid-cols-[minmax(240px,1fr)_minmax(340px,580px)_minmax(240px,1fr)] items-stretch gap-6 min-h-[560px] select-none"
+          className="relative grid grid-cols-1 md:grid-cols-[minmax(220px,1fr)_minmax(420px,560px)_minmax(220px,1fr)] items-stretch gap-6 min-h-[520px] select-none"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
@@ -1072,7 +1072,7 @@ function AwardsCarousel({ onOpen }: { onOpen: (list: string[], idx: number) => v
                   ${
                     isCenter
                       ? "p-4 w-full max-w-[580px] mx-auto scale-100 opacity-100 z-10 cursor-zoom-in"
-                      : "p-6 hidden lg:flex items-center min-h-[500px] scale-90 opacity-75 hover:opacity-95 cursor-pointer relative overflow-hidden"
+                      : "p-6 hidden md:flex items-center min-h-[480px] scale-90 opacity-80 hover:opacity-100 cursor-pointer relative overflow-hidden"
                   }`}
               >
                 {!isCenter && (
